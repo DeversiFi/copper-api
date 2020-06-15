@@ -72,24 +72,6 @@ Params:
 ## All open orders
 List all open orders for a user
 
-Possible order states
-
-* Pending place
-* Placed
-* Partially filled
-* Partially filled pending cancel
-        case ActiveOrder::OrderStatus::PartiallyFilledPendingCancel:
-            return "Partially filled pending cancel";
-        case ActiveOrder::OrderStatus::PartiallyFilledCancelled:
-            return "Partially filled";
-        case ActiveOrder::OrderStatus::Filled:
-            return "Filled";
-        case ActiveOrder::OrderStatus::PendingCancel:
-            return "Pending cancel";
-        case ActiveOrder::OrderStatus::Cancelled:
-            return "Cancelled";
-        case ActiveOrder::OrderStatus::Unknown:
-
 #### Request 
 
 GET /openorders
@@ -108,11 +90,29 @@ No parameters
 ]
 ```
 
-TODO list states
+Each order entry follows the format
+
+* Order Id
+* User Id
+* Market
+* Price
+* Amount
+* Order state
+
+Possible order states
+
+* Pending place
+* Placed
+* Partially filled
+* Partially filled pending cancel
+* Partially filled cancelled
+* Filled
+* Pending Cancel
+* Cancelled
 
 ## All orders
 
-List all orders, open and historical for a user
+List all orders, open and historical for a user. Format and possible order states same as for Open Orders endpoint
 
 #### Request
 
