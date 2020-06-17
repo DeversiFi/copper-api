@@ -20,6 +20,8 @@ sig = hmac.new(
 
 headers = {'Authorization': publicAPIKey, 'X-Timestamp':str(timestampMicroseconds), 'X-Signature':sig}
 
+print "GETting from " + url
+
 r = requests.get(url, headers=headers) 
 
 print r.text

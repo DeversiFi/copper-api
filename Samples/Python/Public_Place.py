@@ -9,7 +9,7 @@ from Common import copper_router_url, publicAPIKey, privateAPIKey
 path='/place'
 url = copper_router_url + ':8080' + path
 
-jsonData={'uid':1, 'symbol':'BTCUSD', 'price':10.0, 'amount':1.0, 'flags':0}
+jsonData={'uid':1, 'symbol':'BTCUST', 'price':10000, 'amount':.001, 'flags':0}
 
 timestampMicroseconds = int(round(time.time() * 1000000))
 
@@ -21,6 +21,8 @@ sig = hmac.new(
 ).hexdigest()
 
 headers = {'Authorization': publicAPIKey, 'X-Timestamp':str(timestampMicroseconds), 'X-Signature':sig}
+
+print "POSTing to " + url
 
 r = requests.post(url, json=jsonData, headers=headers) 
 
